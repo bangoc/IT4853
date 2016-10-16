@@ -1,0 +1,25 @@
+d1: t1 t3 t1 t5
+d2: t2 t3 t3
+d3: t1 t4 t6 t5
+Ve chi muc nguoc co tan suat tu.
+IR, 141
+IR, 180 --> 157 (7.5)
+---------------------------------------
+Exercise 5.6
+Consider the postings list <4, 10, 11, 12, 15, 62, 63, 265, 268, 270, 400> with a corresponding list of gaps <4, 6, 1, 1, 3, 47, 1, 202, 3, 2, 130>. Assume that the length of the postings list is stored separately, so the system knows when a postings list is complete. Using variable byte encoding: (i) What is the largest gap you can encode in 1 byte? (ii) What is the largest gap you can encode in 2 bytes? (iii) How many bytes will the above postings list require under this encoding? (Count only space for encoding the sequence of numbers.)
+1 byte: 127
+2 byte: 16383
+13 bytes
+Exercise 5.7
+A little trick is to notice that a gap cannot be of length 0 and that the stuff left to encode after shifting cannot be 0. Based on these observations: (i) Suggest a modification to variable byte encoding that allows you to encode slightly larger gaps in the same amount of space. (ii) What is the largest gap you can encode in 1 byte? (iii) What is the largest gap you can encode in 2 bytes? (iv) How many bytes will the postingslist in Exercise 5.6 require under this encoding? (Count only space for encoding the sequence of numbers.)
+Xoa bit trai nhat.
+1 byte: 1111 1111 = 255
+2 byte: 111 1111 1111 1111 = 32767
+11 bytes
+Exercise 5.8 [⋆]
+From the following sequence of γ-coded gaps, reconstruct first the gap sequence and then the postings sequence: 1110001110101011111101101111011.
+
+Exercise 7.5
+Consider again the data of Exercise 6.23 with nnn.atc for the query-dependent scoring. Suppose that we were given static quality scores of 1 for Doc1 and 2 for Doc2. Determine under Equation (7.2) what ranges of static quality score for Doc3 result in it being the first, second or third result for the query best car insurance.
+Exercise 7.6
+Sketch the frequency-ordered postings for the data in Figure 6.9.
