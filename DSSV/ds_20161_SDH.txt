@@ -1,0 +1,66 @@
+Lịch thi 10/3 +- 2 ngày
+
+1. Bùi Văn Mệnh (lớp phó)   +
+2. Nguyễn Trọng Hà          +
+3. Bạch Việt Quý            +
+4. Cao Văn Thắng            -
+5. Phan Trọng Phúc          +
+6. Nguyễn Thu Hằng          +
+7. Đỗ Thị Đào               +
+8. Nguyễn Trọng Trường      +
+9. Lê Thị Mai               +
+10. Ngô Thị Thanh Bình      +
+11. Phùng Đình Vũ           +
+12. Hoàng Hải Vũ            +
+13. Lê Hoàng                +
+14. Nguyễn Việt Khánh       +
+
+Java: 0
+Python: 1
+Html: 3
+PHP: 1
+C++: 1
+
+Cấu Trúc Dữ liệu và giải thuật
+
+BTL: Tiểu luận nghiên cứu
+"Các công cụ tìm kiếm mã nguồn mở và ứng dụng"
+  - khảo sát các công cụ mã nguồn mở hiện có
+    - giới thiệu, công nghệ, hiệu năng, tính chính xác (hiệu quả tìm kiếm)...?
+    - ví dụ ứng dụng thực tế ntn?...
+    - khả năng mở rộng....?
+    - go insight: kiến trúc, mô hình, kiểu truy vấn v.v.
+3/3 Bảo vệ BTL báo cáo thuyết trình.
+tiêu trí đánh giá:
+ +trích dẫn đầy đủ nguồn, nội dung tìm hiểu được, khả năng nắm bắt công nghệ, bản chất lý thuyết....
+ -không sao chép
+Chia nhóm 3 người: (15/02) - thu thập thông tin nhóm
+
+
+Nhóm 1:
+Lê Thị Mai *
+Đỗ Thị Đào 
+Nguyễn Thu Hằng
+
+Nhóm 2:
+Bùi Văn Mệnh *
+Nguyễn Trọng Trường
+Phan Trọng Phúc
+
+Nhóm 3:
+Lê Hoàng*
+Nguyễn Việt Khánh
+Bạch Việt Quý
+
+Nhóm 4:
+Ngô Thị Thanh Bình*
+Nguyễn Trọng Hà
+Cao Văn Thắng
+
+Nhóm 5:
+Phùng Đình Vũ *
+Hoàng Hải Vũ
+Nguyễn Mạnh Hoàn
+
+
+Ngày thi????
