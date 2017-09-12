@@ -1,0 +1,14 @@
+{
+  "collection": [
+    {"query": "Các giải thuật sắp xếp",
+      "description": "Muốn tìm hiểu về giải thuật sắp xếp, bất kỳ trang web nào cung cấp thông tin về giải thuật sắp xếp: tổng hợp các giải thuật sắp xếp, giải thích về một giải thuật sắp cụ thể, hướng dẫn cài đặt giải thuật sắp xếp trên một ngôn ngữ lập trình đều là kết quả phù hợp.",
+      "sites": [
+          {"url": "https://vi.wikipedia.org/wiki/Thu%E1%BA%ADt_to%C3%A1n_s%E1%BA%AFp_x%E1%BA%BFp",
+          "title": "Thuật toán sắp xếp – Wikipedia tiếng Việt",
+          "content": "Điểm khác biệt giữa sắp xếp nhanh và sắp xếp trộn là trong sắp xếp trộn việc xác định thứ tự được xác định khi \"trộn\"",
+          "relevance": 1
+          }
+        ]
+    }
+  ]
+}
