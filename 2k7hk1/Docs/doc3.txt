@@ -1,0 +1,1 @@
+Tìm kiếm thông tin (IR - Information Retrieval) là lĩnh vực nghiên cứu việc tìm kiếm văn bản, tìm kiếm thông tin trong văn bản, hay các metadata về văn bản, cũng như tìm kiếm structured storage, relational databases, and the World Wide Web.

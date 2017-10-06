@@ -1,0 +1,3 @@
+Nhận thông tin về hình ảnh
+
+Bạn có thể tìm thêm thông tin về hình ảnh mà bạn thấy trong kết quả tìm kiếm bằng cách nhấp vào hình ảnh. Ví dụ: bạn có thể biết hình ảnh đến từ trang web nào, kích thước của hình ảnh. Bạn cũng có thể tìm những hình ảnh có liên quan tới hình ảnh đó.

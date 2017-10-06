@@ -1,0 +1,8 @@
+ Tìm kiếm thông tin trên Internet
+
+I. Khái quát về Internet
+
+1. Giới thiệu Internet
+Internet – cũng được biết với tên gọi Net – là mạng máy tính lớn nhất thế giới, hoặc chính xác hơn là mạng của các mạng, tức bao gồm nhiều mạng máy tính trên thế giới được nối lại với nhau.
+
+Internet bao gồm rất nhiều mạng trên thế giới kết nối với nhau và cho phép bất kỳ một máy tính nào trong mạng có thể kết nối bất kỳ máy nào khác để trao đổi thông tin với nhau. Một khi đã kết nối vào Internet, máy tính của bạn sẽ là một trong số hàng chục triệu thành viên của mạng khổng lồ này.
