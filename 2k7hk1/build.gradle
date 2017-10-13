@@ -29,6 +29,7 @@ dependencies {
     compile "org.apache.lucene:lucene-spatial-extras:7.0.0"
     compile "org.apache.lucene:lucene-spatial3d:7.0.0"
     compile "org.apache.lucene:lucene-suggest:7.0.0"
+    compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.7.v20170914'
     compile group: 'com.carrotsearch', name: 'java-sizeof', version: '0.0.5'
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
 }
