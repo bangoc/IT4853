@@ -178,6 +178,15 @@ public class IndexFiles {
             Field pathField = new StringField("path", file.toString(), Field.Store.YES);
             doc.add(pathField);
 
+            BufferedReader buff= new BufferedReader(new InputStreamReader(Files.newInputStream(file), StandardCharsets.UTF_8));
+
+            String title = buff.readLine();
+            buff.close();
+
+            Field titleField = new StringField("title", title, Field.Store.YES);
+            doc.add(titleField);
+
+
             // Add the last modified date of the file a field named "modified".
             // Use a LongPoint that is indexed (i.e. efficiently filterable with
             // PointRangeQuery).  This indexes to milli-second resolution, which

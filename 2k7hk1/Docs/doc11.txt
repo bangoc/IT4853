@@ -1,0 +1,3 @@
+Sử dụng mục tìm kiếm nâng cao của chức năng tìm kiếm
+
+Ngôn ngữ để tìm kiếm. Đây là một chi tiết đáng lưu ý vì nếu bạn muốn tìm tài liệu bằng tiếng Việt thì bạn nên chuẩn bị một bộ gõ tiếng Việt như Vietkey hay Unikey để có thể gõ những từ khóa mà bạn muốn tìm bằng tiếng Việt, khi đó kết quả dò tìm sẽ chính xác hơn nhiều.

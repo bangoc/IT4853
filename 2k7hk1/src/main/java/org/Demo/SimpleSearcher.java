@@ -25,18 +25,25 @@ public class SimpleSearcher {
     private IndexSearcher searcher = new IndexSearcher(reader);
     private Analyzer analyzer = new StandardAnalyzer();
     private QueryParser parser = new QueryParser(field, analyzer);
+    public static final int hitsPerPage = 3;
     public SimpleSearcher() throws IOException {
     }
-    public JSONObject search(String query_text) throws ParseException, IOException {
+    public JSONObject search(String query_text, int page) throws ParseException, IOException {
         Query query = parser.parse(query_text);
-        TopDocs results = searcher.search(query, 100);
+        TopDocs results = searcher.search(query, 1000);
         ScoreDoc[] hits = results.scoreDocs;
         JSONObject out = new JSONObject();
         JSONArray arr = new JSONArray();
-        for (ScoreDoc scoreDoc: hits) {
+
+        int start = (page - 1) * hitsPerPage;
+        int end = start + hitsPerPage;
+
+        for (int i = start; i < Math.min(end, hits.length); ++i) {
+            ScoreDoc scoreDoc = hits[i];
             Document doc = searcher.doc(scoreDoc.doc);
             JSONObject obj = new JSONObject();
             obj.put("path", doc.get("path"));
+            obj.put("title", doc.get("title"));
             arr.add(obj);
         }
         out.put("hits", arr);

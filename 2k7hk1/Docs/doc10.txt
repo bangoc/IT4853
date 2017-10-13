@@ -1,0 +1,3 @@
+Những bước cơ bản để tìm kiếm
+
+Sau khi gõ từ khóa vào và tìm kiếm thì một loạt kết quả sẽ hiển ra. Mỗi kết quả là một đường link đến trang web có chứa từ khóa hoặc chủ đề mà bạn đang muốn tìm. Việc bạn cần làm lúc này là xem xét kết quả mà chức năng tìm kiếm đưa ra

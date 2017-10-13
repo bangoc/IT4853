@@ -13,6 +13,7 @@ import java.io.IOException;
 public class SimpleHandler extends AbstractHandler
 {
     private SimpleSearcher searcher = new SimpleSearcher();
+    public static final int hitsPerPage = 10;
 
     public SimpleHandler() throws IOException {
     }
@@ -24,7 +25,12 @@ public class SimpleHandler extends AbstractHandler
             return;
 
         try {
-            JSONObject result = searcher.search(baseRequest.getParameter("q"));
+            String q = baseRequest.getParameter("q");
+            String page_str = baseRequest.getParameter("page");
+            int page = 1;
+            if (page_str!= null && !page_str.isEmpty())
+                page = Integer.parseInt(page_str);
+            JSONObject result = searcher.search(q, page);
             response.setContentType("text/html;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
             baseRequest.setHandled(true);
