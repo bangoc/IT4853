@@ -31,10 +31,10 @@ public class SimpleHandler extends AbstractHandler
             if (page_str!= null && !page_str.isEmpty())
                 page = Integer.parseInt(page_str);
             JSONObject result = searcher.search(q, page);
-            response.setContentType("text/html;charset=utf-8");
+            response.setContentType("application/json;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
             baseRequest.setHandled(true);
-            response.getWriter().println(result.toJSONString());
+            response.getWriter().write(result.toJSONString());
 
         } catch (ParseException e) {
             e.printStackTrace();
