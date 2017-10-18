@@ -1,5 +1,6 @@
 package org.Demo;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
@@ -12,6 +13,7 @@ import java.io.IOException;
 
 public class SimpleHandler extends AbstractHandler
 {
+    private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(SimpleHandler.class);
     private SimpleSearcher searcher = new SimpleSearcher();
     public static final int hitsPerPage = 10;
 
@@ -27,6 +29,9 @@ public class SimpleHandler extends AbstractHandler
         try {
             String q = baseRequest.getParameter("q");
             String page_str = baseRequest.getParameter("page");
+
+//            org.apache.logging.log4j.LogManager.getRootLogger().debug("Query: " + q + " page: " + page_str);
+            logger.debug("Query: " + q + " page: " + page_str);
             int page = 1;
             if (page_str!= null && !page_str.isEmpty())
                 page = Integer.parseInt(page_str);
