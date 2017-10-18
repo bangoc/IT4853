@@ -1,5 +1,7 @@
 package org.Demo;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -21,12 +23,14 @@ import java.nio.file.Paths;
 public class SimpleSearcher {
     public static final String index_path = Configs.getInstance().getString("index.dir");
     public static final String field = "contents";
+    private static final Logger logger = LogManager.getLogger(SimpleSearcher.class);
     private IndexReader reader = null;
     private IndexSearcher searcher = null;
     private Analyzer analyzer = new StandardAnalyzer();
     private QueryParser parser = new QueryParser(field, analyzer);
     public static final int hitsPerPage = 3;
     public SimpleSearcher() throws IOException {
+        logger.debug("Loading index from " + index_path);
         reader = DirectoryReader.open(FSDirectory.open(Paths.get(index_path)));
         searcher = new IndexSearcher(reader);
     }

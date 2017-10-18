@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-mainClassName = "org.Demo.SearchFiles"
+mainClassName = "org.Demo.SimpleServer"
 
 dependencies {
     compile 'org.jsoup:jsoup:1.10.3'
