@@ -19,14 +19,16 @@ import java.io.IOException;
 import java.nio.file.Paths;
 
 public class SimpleSearcher {
-    public static final String index_path = "/home/bangoc/IdeaProjects/Demo/Data";
+    public static final String index_path = Configs.getInstance().getString("index.dir");
     public static final String field = "contents";
-    private IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(index_path)));
-    private IndexSearcher searcher = new IndexSearcher(reader);
+    private IndexReader reader = null;
+    private IndexSearcher searcher = null;
     private Analyzer analyzer = new StandardAnalyzer();
     private QueryParser parser = new QueryParser(field, analyzer);
     public static final int hitsPerPage = 3;
     public SimpleSearcher() throws IOException {
+        reader = DirectoryReader.open(FSDirectory.open(Paths.get(index_path)));
+        searcher = new IndexSearcher(reader);
     }
     public JSONObject search(String query_text, int page) throws ParseException, IOException {
         Query query = parser.parse(query_text);
