@@ -24,3 +24,24 @@ void ParseList(const std::string& file_name, T& out) {
     out.push_back(val);
   }
 }
+
+template<typename T>
+void ParseList(const std::string& file_name, T& out, int step_size) {
+  typename T::value_type sublist;
+  typename T::value_type::value_type val;
+  std::ifstream inp{file_name};
+  int cc = 0;
+  while (inp >> val) {
+    ++cc;
+    sublist.push_back(val);
+    if (cc >= step_size) {
+      out.push_back(sublist);
+      sublist.clear();
+      cc = 0;
+    }
+  }
+  if (cc > 0) {
+    out.push_back(sublist);
+    sublist.clear();
+  }
+}
