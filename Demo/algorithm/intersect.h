@@ -1,4 +1,4 @@
-#include <utilities.h>
+#include <algorithm/utilities.h>
 
 template<typename T>
 bool Intersect(const T& la, const T& lb, T& out) {
