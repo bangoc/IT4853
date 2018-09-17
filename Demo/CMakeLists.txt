@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.0)
+project(cran)
+set(CMAKE_CXX_STANDARD 17)
+add_executable(cran cran_parser.cc)
+add_subdirectory(thirdparty/googletest)
+add_executable(utilities_ut algorithm/utilities_ut.cc)
+target_include_directories(utilities_ut PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(utilities_ut gtest_main)
