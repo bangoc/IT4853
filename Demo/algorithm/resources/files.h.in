@@ -4,3 +4,4 @@ const std::string sorted_list1 = "@CMAKE_CURRENT_SOURCE_DIR@/algorithm/resources
 const std::string sorted_list2 = "@CMAKE_CURRENT_SOURCE_DIR@/algorithm/resources/sorted_list2.txt";
 const std::string sorted_list3 = "@CMAKE_CURRENT_SOURCE_DIR@/algorithm/resources/sorted_list3.txt";
 const std::string unsorted_list1 = "@CMAKE_CURRENT_SOURCE_DIR@/algorithm/resources/unsorted_list1.txt";
+const std::string tokenized_text1 = "@CMAKE_CURRENT_SOURCE_DIR@/algorithm/resources/tokenized_text1.txt";

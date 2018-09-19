@@ -1,3 +1,6 @@
+#ifndef ALGORITHM_UTILITIES_H_
+#define ALGORITHM_UTILITIES_H_
+
 #include <fstream>
 #include <string>
 
@@ -45,3 +48,5 @@ void ParseList(const std::string& file_name, T& out, int step_size) {
     sublist.clear();
   }
 }
+
+#endif  // ALGORITHM_UTILITIES_H_

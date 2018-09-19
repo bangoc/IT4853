@@ -32,6 +32,13 @@ TEST(ParseList, SkipPointer) {
   EXPECT_EQ(l, lexpected);
 }
 
+TEST(ParseList, Vector) {
+  std::vector<long> v;
+  ParseList(sorted_list2, v);
+  std::vector<long> vexpected {1, 2, 3, 5, 6};
+  EXPECT_EQ(v, vexpected);
+}
+
 TEST(IsAscendingList, Ordered) {
   std::list<long> l;
   ParseList(sorted_list2, l);
@@ -42,4 +49,9 @@ TEST(IsAscendingList, UnOrdered) {
   std::list<long> l;
   ParseList(unsorted_list1, l);
   EXPECT_EQ(IsAscendingList(l), false);
+}
+
+TEST(IsAscendingList, OrderedVector) {
+  std::vector<long> v {1, 2, 3, 5, 6};
+  EXPECT_EQ(IsAscendingList(v), true);
 }

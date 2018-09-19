@@ -1,5 +1,6 @@
-#include <algorithm/intersect.h>
-#include <algorithm/resources/files.h>
+#include "algorithm/intersect.h"
+#include "algorithm/resources/files.h"
+
 #include <gtest/gtest.h>
 
 #include <list>

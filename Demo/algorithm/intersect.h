@@ -1,3 +1,6 @@
+#ifndef ALGORITHM_INTERSECT_H_
+#define ALGORITHM_INTERSECT_H_
+
 #include <algorithm/utilities.h>
 
 #include <list>
@@ -66,3 +69,5 @@ bool IntersectSkipPointer(const std::list<T>& la,
   }
   return true;
 }
+
+#endif
