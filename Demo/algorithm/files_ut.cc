@@ -5,7 +5,7 @@
 
 TEST(ParseToken, StickSeperator) {
   std::vector<std::string> tokens;
-  EXPECT_EQ(ParseToken(tokenized_text1, tokens), true);
+  EXPECT_EQ(ParseTokenFile(tokenized_text1, tokens), true);
   std::vector<std::string> tokens_expected {
     "Trường", "Đại Học", "Bách Khoa", "Hà Nội",
     "Viện", "Công nghệ", "thông tin", "và", "truyền thông",
