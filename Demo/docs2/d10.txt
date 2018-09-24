@@ -1,0 +1,10 @@
+Số học
+Số học là một phân nhánh toán học lâu đời nhất[1] và sơ cấp nhất, được hầu hết mọi người thường xuyên sử dụng từ những công việc thường nhật cho đến các tính toán khoa học và kinh doanh cao cấp, qua các phép tính cộng, trừ, nhân, chia. Người ta thường dùng thuật ngữ này để chỉ một phân nhánh toán học chú trọng đến các thuộc tính sơ cấp của một số phép tính trên các con số. Những nhà toán học đôi khi dùng chữ số học (cao cấp)[2] để nhắc đến môn lý thuyết số, nhưng không nên nhầm lý thuyết này với số học sơ cấp. Các ngôn ngữ sử dụng từ vựng gốc Hán khác lại gọi môn này là toán thuật; từ số học lại được dùng để gọi môn học mà người Việt gọi là toán học.
+
+Học sinh Việt Nam học môn Số học như một phân môn của môn Toán ở năm lớp 6.
+Vào thời tiền sử, người ta sử dụng số học qua một số đồ vật để chỉ khái niệm cộng và trừ, nổi tiếng nhất là xương Ishango ở Trung Phi, có từ những năm từ 20.000 đến 18.000 năm trước công nguyên.[3]
+
+Những người Babylon rõ ràng đã có những kiến thức khá vững về gần như mọi lĩnh vực của số học sơ cấp từ năm 1800 TCN, dù các sử gia chỉ có thể đoán được điều này qua các phương pháp được dùng để tính ra kết quả số học - ví dụ như những miếng đất sét Plimpton 322, có vẻ là danh sách các định lý Pytago, nhưng không biết được làm sao người ta nghĩ ra danh sách này. Cũng vậy, cuộn giấy Toán học Rhind của người Ai Cập (có từ khoảng 1650 TCN, nhưng rõ ràng là chép lại từ văn bản khoảng 1850 TCN) cho thấy bằng chứng về các phép tính cộng, trừ, nhân, và chia trong hệ phân số đơn vị.
+
+Các hệ đếm đầu tiên bao gồm ký hiệu vị trí nhưng không phải là hệ thập phân, bao gồm các hệ cơ số 60 của hệ thống chữ số Babylon và hệ cơ số 20 của hệ thống chữ số Maya. Bởi vì các khái niệm sử dụng chữ số này, khả năng sử dụng lại các chữ số tương tự cho các hệ đếm khác nhau đóng góp một phương pháp đơn giản và hiệu quả hơn trong tính toán.
+
