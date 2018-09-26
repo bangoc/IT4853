@@ -23,6 +23,8 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.similarities.BM25Similarity;
+import org.apache.lucene.search.similarities.ClassicSimilarity;
 import org.apache.lucene.store.FSDirectory;
 
 /** Simple command-line based search demo. */
@@ -30,10 +32,14 @@ public class SearchFiles {
 
   private SearchFiles() {}
 
+  public enum SimilarityScore {
+      DEFAULT, VSM, BM25
+  }
+  
   /** Simple command-line based search demo. */
   public static void main(String[] args) throws Exception {
     String usage =
-      "Usage:\tjava org.apache.lucene.demo.SearchFiles [-index dir] [-field f] [-repeat n] [-queries file] [-query string] [-raw] [-paging hitsPerPage]\n\nSee http://lucene.apache.org/core/4_1_0/demo/ for details.";
+      "Usage:\tjava org.apache.lucene.demo.SearchFiles [-index dir] [-field f] [-repeat n] [-queries file] [-query string] [-raw] [-paging hitsPerPage] [-sim vsm or bm25]\n\nSee http://lucene.apache.org/core/4_1_0/demo/ for details.";
     if (args.length == 0 || (args.length > 0 && ("-h".equals(args[0]) || "-help".equals(args[0])))) {
       System.out.println(usage);
       System.exit(0);
@@ -46,6 +52,7 @@ public class SearchFiles {
     boolean raw = false;
     String queryString = null;
     int hitsPerPage = 10;
+    SimilarityScore score = SimilarityScore.DEFAULT;
     
     for(int i = 0;i < args.length;i++) {
       if ("-index".equals(args[i])) {
@@ -72,6 +79,12 @@ public class SearchFiles {
           System.exit(1);
         }
         i++;
+      } else if ("-sim".equals(args[i])) {
+          if (args[i+1].equals("vsm")) {
+              score = SimilarityScore.VSM;
+          } else {
+              score = SimilarityScore.BM25;
+          }
       }
     }
     
@@ -86,6 +99,7 @@ public class SearchFiles {
       in = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
     }
     QueryParser parser = new QueryParser(field, analyzer);
+    
     while (true) {
       if (queries == null && queryString == null) {                        // prompt the user
         System.out.println("Enter query: ");
@@ -104,7 +118,18 @@ public class SearchFiles {
       
       Query query = parser.parse(line);
       System.out.println("Searching for: " + query.toString(field));
-            
+      
+      switch (score) {
+          case DEFAULT:
+              break;
+          case VSM:
+              searcher.setSimilarity(new ClassicSimilarity());
+              break;
+          case BM25:
+              searcher.setSimilarity(new BM25Similarity());
+              break;
+      }
+      
       if (repeat > 0) {                           // repeat & time as benchmark
         Date start = new Date();
         for (int i = 0; i < repeat; i++) {
