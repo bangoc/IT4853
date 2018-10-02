@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.0)
+project(PRCombiner)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_CXX_STANDARD 11)
+include_directories(/usr/include/python2.7)
+add_executable(pr pr_combine.cc)
+target_link_libraries(pr python2.7)
