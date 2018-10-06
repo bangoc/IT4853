@@ -1,18 +1,17 @@
 #ifndef STRUCTURE_POSTINGS_H_
 #define STRUCTURE_POSTINGS_H_
 
-#include <string>
-#include <vector>
+#include "structure/base.h"
+#include "structure/conversions.h"
+#include "structure/dictionary.h"
 
-struct PostingCard{
-  std::int32_t docid;
-  std::vector<std::int32_t> positions;
-};
+#include <iostream>
 
-using PostingList = std::vector<PostingCard>;
-using Postings = std::vector<PostingList>;
+bool BuildPostingTermVector(const std::string& in_folder, const std::string& out_folder);
+bool SerializePostingTermVector(const std::string& file_path, const PostingTermVector& ptv);
+bool ParsePostingTermVector(const std::string& file_path, PostingTermVector& ptv);
 
-bool ParsePostings(const std::string& file_name, Postings& out);
-bool SerializePostings(const std::string& file_name, const Postings& postings);
+std::ostream& operator<<(std::ostream& stream, const PostingTermVector& ptv);
+std::istream& operator>>(std::istream& stream, PostingTermVector& ptv);
 
 #endif  // STRUCTURE_POSTINGS_H_

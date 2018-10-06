@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(cran)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 option(build_tools "Build the experimental tools" ON)
 option(build_temporaries "Build the temporary executable" ON)
@@ -18,9 +19,6 @@ add_executable(listcv tools/list_converter.cc)
 add_executable(dictionary_main structure/dictionary_main.cc structure/dictionary.cc)
 target_include_directories(dictionary_main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_executable(postings_main structure/postings_main.cc structure/postings.cc)
-target_include_directories(postings_main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
 add_executable(intersect_main algorithm/intersect_main.cc)
 target_include_directories(intersect_main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -31,7 +29,7 @@ if (${build_tools})
 endif (${build_tools})
 
 add_executable(indexer indexer.cc structure/inverted_index.cc
-               structure/conversions.cc structure/token.cc algorithm/files.cc)
+               structure/conversions.cc structure/token.cc structure/postings.cc algorithm/files.cc)
 target_include_directories(indexer PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(indexer stdc++fs)
 
@@ -40,3 +38,8 @@ if (${build_temporaries})
   target_include_directories(files_main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   target_link_libraries(files_main stdc++fs)
 endif (${build_temporaries})
+
+add_executable(pp intersection/positional/pp_intersect.cc)
+
+add_executable(ld ld_main.cc structure/inverted_index.cc structure/postings.cc structure/token.cc algorithm/files.cc structure/conversions.cc)
+target_link_libraries(ld stdc++fs)

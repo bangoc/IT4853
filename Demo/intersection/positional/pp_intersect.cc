@@ -1,13 +1,9 @@
+#include "structure/base.h"
+
 #include <iostream>
+#include <cmath>
 #include <cstdint>
 #include <vector>
-
-struct PostingDoc {
-  std::int32_t docid;
-  std::vector<std::int32_t> positions;
-};
-
-using PostingsList = std::vector<PostingDoc>;
 
 struct DocPositions {
   std::int32_t docid;
@@ -17,13 +13,9 @@ struct DocPositions {
 
 using PositionalAnswer = std::vector<DocPositions>;
 
-std::int32_t abs(std::int32_t value) {
-  return value < 0 ? -value: value;
-}
-
 void PositionalIntersect(
-      const PostingsList& p1,
-      const PostingsList& p2,
+      const PostingDocVector& p1,
+      const PostingDocVector& p2,
       std::int32_t k,
       PositionalAnswer& answer) {
   answer.clear();
@@ -38,7 +30,7 @@ void PositionalIntersect(
       auto pp2_iter = pp2.begin();
       while (pp1_iter != pp1.end()) {
         while (pp2_iter != pp2.end()) {
-          if (abs(*pp1_iter - *pp2_iter) <= k) {
+          if (std::abs(*pp1_iter - *pp2_iter) <= k) {
             l.push_back(*pp2_iter);
           } else {
             if (*pp2_iter > *pp1_iter) {
@@ -47,7 +39,7 @@ void PositionalIntersect(
           }
           ++pp2_iter;
         }
-        while (l.size() > 0 && abs(l[0] - *pp1_iter) > k) {
+        while (l.size() > 0 && std::abs(l[0] - *pp1_iter) > k) {
           l.erase(l.begin());
         }
         for (auto ps: l) {
@@ -68,11 +60,11 @@ void PositionalIntersect(
 }
 
 int main() {
-  PostingsList p1 {{1, {1, 2, 5, 8, 10}},
+  PostingDocVector p1 {{1, {1, 2, 5, 8, 10}},
                    {2, {3, 6, 8, 10, 15}},
                    {3, {3, 5, 9, 11, 15, 17}}
                   };
-  PostingsList p2 {{1, {3, 9}},
+  PostingDocVector p2 {{1, {3, 9}},
                    {2, {12}},
                    {3, {10, 12, 16}}
                   };

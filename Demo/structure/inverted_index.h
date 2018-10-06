@@ -1,29 +1,11 @@
 #ifndef STRUCTURE_INVERTED_INDEX_H_
 #define STRUCTURE_INVERTED_INDEX_H_
 
-#include "structure/conversions.h"
-#include "structure/dictionary.h"
-#include "structure/postings.h"
+#include "structure/base.h"
 
-#include <iostream>
-
-struct SimpleIndexEntry {
-  std::int32_t termid;
-  struct Posting {
-    std::int32_t docid;
-    std::vector<std::int32_t> positions;
-  };
-  using SimpleIndexPostingList = std::vector<Posting>;
-  SimpleIndexPostingList postings;
-};
-
-using SimpleIndex = std::vector<SimpleIndexEntry>;
-
-bool BuildSimpleIndex(const std::string& in_folder, const std::string& out_folder);
-bool SerializeSimpleIndex(const std::string& file_path, const SimpleIndex& simple_index);
-bool ParseSimpleIndex(const std::string& file_path, SimpleIndex& out);
-
-std::ostream& operator<<(std::ostream& stream, const SimpleIndex& simple_index);
-std::istream& operator>>(std::istream& stream, SimpleIndex& simple_index);
+void CalculateLd(const PostingTermVector& ptv,
+                 const std::int32_t N,
+                 std::map<std::int32_t, double>& ld,
+                 std::map<std::int32_t, std::string>& explain);
 
 #endif  // STRUCTURE_INVERTED_INDEX_H_

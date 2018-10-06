@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
 project(positional)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_executable(pp pp_intersect.cc)

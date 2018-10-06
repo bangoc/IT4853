@@ -1,3 +1,4 @@
+#include "structure/base.h"
 #include "structure/dictionary.h"
 
 void CreateDemoDictionary() {
