@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.0)
+project(compression)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+add_executable(gen generator.cc)
+add_executable(vb vb_encode.cc)
