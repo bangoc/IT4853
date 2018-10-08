@@ -31,15 +31,19 @@ void AddToken(const Token& token, IdToTerm& id_term, PostingTermVector& ptv,
   }
 }
 
+const std::string ptv_name = "ptv.dat";
+const std::string id_path_name = "id_path.dat";
+const std::string id_term_name = "id_term.dat";
+
 }// namespace
 
-bool BuildPostingTermVector(const std::string& in_folder, const std::string& out_folder) {
+bool PrepareIndexData(const std::string& in_folder,
+                      PostingTermVector& ptv,
+                      IdToPath& id_path,
+                      IdToTerm& id_term) {
   TokenList token_list;
-  IdToPath id_path;
   ParseTokenFolder(in_folder, token_list, id_path);
   std::sort(token_list.begin(), token_list.end());
-  IdToTerm id_term;
-  PostingTermVector ptv;
   AddToken(token_list[0], id_term, ptv, true, true, true);
   for (auto i = 2; i < token_list.size(); ++i) {
     Token& token1 = token_list[i - 1];
@@ -54,10 +58,18 @@ bool BuildPostingTermVector(const std::string& in_folder, const std::string& out
       // This should not happen
     }
   }
+  return true;
+}
+
+bool PrepareIndexData(const std::string& in_folder, const std::string& out_folder) {
+  PostingTermVector ptv;
+  IdToPath id_path;
+  IdToTerm id_term;
+  PrepareIndexData(in_folder, ptv, id_path, id_term);
   std::experimental::filesystem::create_directories(out_folder);
-  SerializePostingTermVector(out_folder + "/ptv.dat", ptv);
-  SerializeIdToPath(out_folder + "/id_path.dat", id_path);
-  SerializeIdToTerm(out_folder + "/id_term.dat", id_term);
+  SerializePostingTermVector(out_folder + "/" + ptv_name, ptv);
+  SerializeIdToPath(out_folder + "/id_path.dat" + id_path_name, id_path);
+  SerializeIdToTerm(out_folder + "/id_term.dat" + id_term_name, id_term);
   return true;
 }
 
@@ -106,8 +118,21 @@ std::istream& operator>>(std::istream& stream, PostingTermVector& ptv) {
   return stream;
 }
 
-bool ParsePostingTermVector(const std::string& file_path, PostingTermVector& ptv) {
-  std::ifstream inp{file_path};
-  inp >> ptv;
+bool LoadIndexData(const std::string& index_data_folder,
+                   PostingTermVector& ptv,
+                   IdToPath& id_path,
+                   IdToTerm& id_term) {
+  {
+    std::ifstream inp{index_data_folder + "/" + ptv_name};
+    inp >> ptv;
+  }
+  {
+    std::ifstream inp{index_data_folder + "/" + id_path_name};
+    inp >> id_path;
+  }
+  {
+    std::ifstream inp{index_data_folder + "/" + id_term_name};
+    inp >> id_term;
+  }
   return true;
 }

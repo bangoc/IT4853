@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <vector>
 
 template<typename T>
 bool IsAscendingList(const T& l) {
@@ -48,5 +49,7 @@ void ParseList(const std::string& file_name, T& out, int step_size) {
     sublist.clear();
   }
 }
+
+bool Tokenize(const std::string& line, char separator, std::vector<std::string>& out);
 
 #endif  // ALGORITHM_UTILITIES_H_

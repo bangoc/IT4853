@@ -26,4 +26,10 @@ struct WordEntry {
 
 using Dictionary = std::map<std::string, WordEntry>;
 
+struct ScoreDoc {
+  std::int32_t docid;
+  double score;
+  std::string explain;
+};
+
 #endif  // STRUCTURE_BASE_H_

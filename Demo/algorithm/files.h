@@ -10,6 +10,9 @@
 #include <string>
 #include <vector>
 
+bool ParseTokenLine(const std::string& line,
+      std::vector<std::string>& out);
+
 bool ParseTokenFile(const std::string& file_name,
       std::vector<std::string>& out);
 

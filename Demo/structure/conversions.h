@@ -7,6 +7,7 @@
 
 using IdToPath = std::map<std::int32_t, std::string>;
 using IdToTerm = std::map<std::int32_t, std::string>;
+using TermToId = std::map<std::string, std::int32_t>;
 
 std::ostream& operator<<(std::ostream& stream, const std::map<std::int32_t, std::string>& m);
 std::istream& operator>>(std::istream& stream, std::map<std::int32_t, std::string>& m);

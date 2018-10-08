@@ -28,11 +28,6 @@ if (${build_tools})
   target_include_directories(file_iterator PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 endif (${build_tools})
 
-add_executable(indexer indexer.cc structure/inverted_index.cc
-               structure/conversions.cc structure/token.cc structure/postings.cc algorithm/files.cc)
-target_include_directories(indexer PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(indexer stdc++fs)
-
 if (${build_temporaries})
   add_executable(files_main algorithm/files_main.cc algorithm/files.cc structure/conversions.cc structure/token.cc)
   target_include_directories(files_main PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
@@ -41,5 +36,15 @@ endif (${build_temporaries})
 
 add_executable(pp intersection/positional/pp_intersect.cc)
 
-add_executable(ld ld_main.cc structure/inverted_index.cc structure/postings.cc structure/token.cc algorithm/files.cc structure/conversions.cc)
+set(IndexSRC structure/inverted_index.cc structure/conversions.cc structure/token.cc
+             structure/postings.cc algorithm/files.cc structure/vsm_query.cc)
+
+add_executable(indexer indexer.cc ${IndexSRC})
+target_include_directories(indexer PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(indexer stdc++fs)
+
+add_executable(ld ld_main.cc ${IndexSRC})
 target_link_libraries(ld stdc++fs)
+
+add_executable(searcher searcher.cc ${IndexSRC})
+target_link_libraries(searcher stdc++fs)
