@@ -8,3 +8,15 @@ target_link_libraries(f python2.7)
 
 add_executable(pr pr.cc)
 target_link_libraries(pr python2.7)
+
+add_executable(hp hp.cc)
+target_link_libraries(hp python2.7)
+
+add_executable(heap heap.cc)
+target_link_libraries(heap python2.7)
+
+add_executable(heaplog heaplog.cc)
+target_link_libraries(heaplog python2.7)
+
+add_executable(zipf zipf.cc)
+target_link_libraries(zipf python2.7)

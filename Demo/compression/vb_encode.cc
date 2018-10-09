@@ -1,11 +1,12 @@
+#include "file_utilities.h"
+
 #include <cstdint>
-#include <fstream>
 #include <list>
 #include <iostream>
 #include <vector>
 
-void VBEncode(std::int32_t v, std::vector<std::int8_t>& out) {
-  std::list<std::int8_t> bytes;
+void VBEncode(std::int32_t v, std::vector<std::uint8_t>& out) {
+  std::list<std::uint8_t> bytes;
   for (;;) {
     bytes.push_front(v % 128);
     if (v < 128) {
@@ -14,38 +15,37 @@ void VBEncode(std::int32_t v, std::vector<std::int8_t>& out) {
     v /= 128;
   }
   bytes.back() += 128;
-  for (std::int8_t v: bytes) {
+  for (std::uint8_t v: bytes) {
     out.push_back(v);
   }
 }
 
 int Encode(const std::string& src_name, const std::string& dest_name) {
   std::vector<std::int32_t> postings;
-  {
-    std::ifstream inp{src_name, std::ios::binary | std::ios::ate};
-    postings.resize(inp.tellg() / sizeof(std::int32_t));
-    inp.seekg(std::ios_base::beg);
-    inp.read(reinterpret_cast<char*>(postings.data()), postings.size() * sizeof(std::int32_t));
-  }
-  std::vector<std::int8_t> vbcode;
+  LoadFile(src_name, postings);
+  std::vector<std::uint8_t> vbcode;
   for (std::int32_t v: postings) {
     VBEncode(v, vbcode);
   }
-  {
-    std::ofstream out{dest_name, std::ios::binary};
-    out.write(reinterpret_cast<char*>(vbcode.data()), vbcode.size());
+  SaveToFile(dest_name, vbcode);
+  return 0;
+}
+
+int EncodeGap(const std::string& src_name, const std::string& dest_name) {
+  std::vector<std::int32_t> postings;
+  LoadFile(src_name, postings);
+  std::vector<std::uint8_t> vbcode;
+  VBEncode(postings[0], vbcode);
+  for (auto i = 1; i < postings.size(); ++i) {
+    VBEncode(postings[i] - postings[i - 1], vbcode);
   }
+  SaveToFile(dest_name, vbcode);
   return 0;
 }
 
 int Decode(const std::string& src_name, const std::string& dest_name) {
   std::vector<std::uint8_t> data;
-  {
-    std::ifstream inp{src_name, std::ios::binary | std::ios::ate};
-    data.resize(inp.tellg());
-    inp.seekg(std::ios_base::beg);
-    inp.read(reinterpret_cast<char*>(data.data()), data.size());
-  }
+  LoadFile(src_name, data);
   std::vector<std::int32_t> values;
   std::int32_t v = 0;
   for (std::uint8_t b: data) {
@@ -57,47 +57,47 @@ int Decode(const std::string& src_name, const std::string& dest_name) {
       v = 0;
     }
   }
-  {
-    std::ofstream out{dest_name, std::ios::binary};
-    out.write(reinterpret_cast<char*>(values.data()), values.size() * sizeof(std::int32_t));
-  }
+  SaveToFile(dest_name, values);
   return 0;
 }
 
-int Compare(const std::string& file_name1, const std::string& file_name2) {
-  std::vector<std::int8_t> data1;
-  std::vector<std::int8_t> data2;
-  auto load = [] (const std::string& file_name, std::vector<std::int8_t> data) {
-    std::ifstream inp{file_name, std::ios::binary | std::ios::ate};
-    data.resize(inp.tellg());
-    inp.seekg(std::ios_base::beg);
-    inp.read(reinterpret_cast<char*>(data.data()), data.size());
-  };
-  load(file_name1, data1);
-  load(file_name2, data2);
-  if (data1.size() != data2.size()) {
-    std::cout << "Different length!" << std::endl;
-    return 1;
-  }
-  for (auto i = 0; i < data1.size(); ++i) {
-    if (data1[i] != data2[i]) {
-      std::cout << "Different value at " << i << std::endl;
-      return 1;
+int DecodeGap(const std::string& src_name, const std::string& dest_name) {
+  std::vector<std::uint8_t> data;
+  LoadFile(src_name, data);
+  std::vector<std::int32_t> values;
+  std::int32_t v = 0;
+  bool first = true;
+  for (std::uint8_t b: data) {
+    if (b < 128) {
+      v = v * 128 + b;
+    } else {
+      v = 128 * v + (b -128);
+      if (first) {
+        values.push_back(v);
+        first = false;
+      } else {
+        values.push_back(values[values.size() - 1] + v);
+      }
+      v = 0;
     }
   }
-  std::cout << "Same values." << std::endl;
+  SaveToFile(dest_name, values);
   return 0;
 }
 
 int main(int argc, char* argv[]) {
   if (argc != 4) {
-    std::cout << "Usage: ./vb [enc/dec/cmp] src_file dest_file" << std::endl;
+    std::cout << "Usage: ./vb [enc/dec/encg/decg/cmp] src_file dest_file" << std::endl;
     return 1;
   }
   if (std::string(argv[1]) == "enc") {
     return Encode(argv[2], argv[3]);
+  } else if (std::string(argv[1]) == "encg") {
+    return EncodeGap(argv[2], argv[3]);
   } else if (std::string(argv[1]) == "dec") {
     return Decode(argv[2], argv[3]);
+  } else if (std::string(argv[1]) == "decg") {
+    return DecodeGap(argv[2], argv[3]);
   } else {
     return Compare(argv[2], argv[3]);
   }
