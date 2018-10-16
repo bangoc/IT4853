@@ -1,4 +1,4 @@
-#include "structure/conversions.h"
+#include "conversions.h"
 
 #include <fstream>
 #include <string>

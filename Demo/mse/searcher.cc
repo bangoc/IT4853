@@ -1,6 +1,6 @@
-#include "algorithm/files.h"
-#include "structure/base.h"
-#include "structure/inverted_index.h"
+#include "base.h"
+#include "inverted_index.h"
+#include "query_parser.h"
 
 #include <iostream>
 

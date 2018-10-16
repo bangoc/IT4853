@@ -1,7 +1,7 @@
-#ifndef STRUCTURE_DICTIONARY_H_
-#define STRUCTURE_DICTIONARY_H_
+#ifndef DICTIONARY_H_
+#define DICTIONARY_H_
 
-#include "structure/base.h"
+#include "base.h"
 
 #include <iostream>
 #include <map>
@@ -11,4 +11,4 @@ std::ostream& operator<<(std::ostream& stream, const Dictionary& dict);
 bool ParseDictionary(const std::string& file_name, Dictionary& out);
 bool SerializeDictionary(const std::string& file_name, const Dictionary& dict);
 
-#endif  // STRUCTURE_DICTIONARY_H_
+#endif  // DICTIONARY_H_

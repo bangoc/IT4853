@@ -1,5 +1,5 @@
-#ifndef STRUCTURE_VSM_QUERY_H_
-#define STRUCTURE_VSM_QUERY_H_
+#ifndef VSM_QUERY_H_
+#define VSM_QUERY_H_
 
 #include <cstdint>
 #include <string>
@@ -16,4 +16,4 @@ struct VSMQuery {
   std::vector<TermWeight> query_terms;
 };
 
-#endif  // STRUCTURE_VSM_QUERY_H_
+#endif  // VSM_QUERY_H_

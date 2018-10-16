@@ -1,5 +1,5 @@
-#ifndef STRUCTURE_CONVERSIONS_H_
-#define STRUCTURE_CONVERSIONS_H_
+#ifndef CONVERSIONS_H_
+#define CONVERSIONS_H_
 
 #include <iostream>
 #include <map>
@@ -18,4 +18,4 @@ bool ParseIdToTerm(const std::string& file_name, IdToTerm& out);
 bool SerializeIdToTerm(const std::string& file_name,
                        const IdToTerm& id_to_term);
 
-#endif  // STRUCTURE_CONVERSIONS_H_
+#endif  // CONVERSIONS_H_

@@ -1,7 +1,12 @@
-#include "algorithm/files.h"
-#include "structure/postings.h"
+#include "index_writer.h"
+
+#include "files_iterator.h"
+#include "index_constant.h"
+#include "token.h"
 
 #include <algorithm>
+#include <iostream>
+#include <fstream>
 
 namespace {
 
@@ -31,11 +36,7 @@ void AddToken(const Token& token, IdToTerm& id_term, PostingTermVector& ptv,
   }
 }
 
-const std::string ptv_name = "ptv.dat";
-const std::string id_path_name = "id_path.dat";
-const std::string id_term_name = "id_term.dat";
-
-}// namespace
+}  // namespace
 
 bool PrepareIndexData(const std::string& in_folder,
                       PostingTermVector& ptv,
@@ -67,9 +68,9 @@ bool PrepareIndexData(const std::string& in_folder, const std::string& out_folde
   IdToTerm id_term;
   PrepareIndexData(in_folder, ptv, id_path, id_term);
   std::experimental::filesystem::create_directories(out_folder);
-  SerializePostingTermVector(out_folder + "/" + ptv_name, ptv);
-  SerializeIdToPath(out_folder + "/id_path.dat" + id_path_name, id_path);
-  SerializeIdToTerm(out_folder + "/id_term.dat" + id_term_name, id_term);
+  SerializePostingTermVector(out_folder + "/" + kPtvName, ptv);
+  SerializeIdToPath(out_folder + "/id_path.dat" + kIdPathName, id_path);
+  SerializeIdToTerm(out_folder + "/id_term.dat" + kIdTermName, id_term);
   return true;
 }
 
@@ -92,47 +93,5 @@ std::ostream& operator<<(std::ostream& stream, const PostingTermVector& ptv) {
 bool SerializePostingTermVector(const std::string& file_path, const PostingTermVector& ptv) {
   std::ofstream output_file{file_path};
   output_file << ptv;
-  return true;
-}
-
-std::istream& operator>>(std::istream& stream, PostingTermVector& ptv) {
-  std::string line;
-  ptv.clear();
-  while (std::getline(stream, line)) {
-    std::stringstream ss{line};
-    PostingTerm posting_term;
-    ss >> posting_term.termid;
-    std::int32_t docid, sz;
-    while (ss >> docid && ss >> sz) {
-      PostingDoc posting_doc;
-      posting_doc.docid = docid;
-      for (auto i = 0; i < sz; ++i) {
-        std::int32_t position;
-        ss >> position;
-        posting_doc.positions.push_back(position);
-      }
-      posting_term.postings.push_back(posting_doc);
-    }
-    ptv.push_back(posting_term);
-  }
-  return stream;
-}
-
-bool LoadIndexData(const std::string& index_data_folder,
-                   PostingTermVector& ptv,
-                   IdToPath& id_path,
-                   IdToTerm& id_term) {
-  {
-    std::ifstream inp{index_data_folder + "/" + ptv_name};
-    inp >> ptv;
-  }
-  {
-    std::ifstream inp{index_data_folder + "/" + id_path_name};
-    inp >> id_path;
-  }
-  {
-    std::ifstream inp{index_data_folder + "/" + id_term_name};
-    inp >> id_term;
-  }
   return true;
 }

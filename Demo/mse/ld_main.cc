@@ -1,6 +1,6 @@
-#include "structure/base.h"
-#include "structure/inverted_index.h"
-#include "structure/postings.h"
+#include "base.h"
+#include "inverted_index.h"
+#include "index_reader.h"
 
 #include <iostream>
 

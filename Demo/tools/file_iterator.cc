@@ -2,7 +2,8 @@
  list all files in a given directory
 */
 
-#include <algorithm/files.h>
+#include "mse/files_iterator.h"
+
 #include <iostream>
 
 int main(int argc, char* argv[]) {

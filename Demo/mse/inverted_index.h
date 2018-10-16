@@ -1,9 +1,9 @@
-#ifndef STRUCTURE_INVERTED_INDEX_H_
-#define STRUCTURE_INVERTED_INDEX_H_
+#ifndef INVERTED_INDEX_H_
+#define INVERTED_INDEX_H_
 
-#include "structure/base.h"
-#include "structure/conversions.h"
-#include "structure/vsm_query.h"
+#include "base.h"
+#include "conversions.h"
+#include "vsm_query.h"
 
 struct InvertedIndex {
   InvertedIndex(const std::string& index_data_path);
@@ -21,9 +21,7 @@ void CalculateLd(const PostingTermVector& ptv,
 void CosineSimilarity(const InvertedIndex& index,
                       const VSMQuery& query,
                       std::vector<ScoreDoc>& similarity);
-void ParseVSMQuery(const std::string& query_text, VSMQuery& query,
-                   InvertedIndex& index);
 
 bool operator<(const ScoreDoc& d1, const ScoreDoc& d2);
 
-#endif  // STRUCTURE_INVERTED_INDEX_H_
+#endif  // INVERTED_INDEX_H_

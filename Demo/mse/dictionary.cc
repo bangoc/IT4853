@@ -1,4 +1,4 @@
-#include "structure/dictionary.h"
+#include "dictionary.h"
 
 #include <fstream>
 #include <sstream>

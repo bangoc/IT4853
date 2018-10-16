@@ -1,5 +1,4 @@
-#include "algorithm/intersect.h"
-#include "algorithm/utilities.h"
+#include "intersect.h"
 
 #include <iostream>
 #include <list>

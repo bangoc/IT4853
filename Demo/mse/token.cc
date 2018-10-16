@@ -1,4 +1,4 @@
-#include "structure/token.h"
+#include "token.h"
 
 bool operator<(const Token& tk1, const Token& tk2) {
   return (tk1.term < tk2.term) ||

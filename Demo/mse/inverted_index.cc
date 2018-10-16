@@ -1,6 +1,6 @@
-#include "algorithm/files.h"
-#include "structure/inverted_index.h"
-#include "structure/postings.h"
+#include "inverted_index.h"
+#include "index_reader.h"
+#include "stick_tokenizer.h"
 
 #include <algorithm>
 #include <cmath>
@@ -8,20 +8,6 @@
 
 bool operator<(const ScoreDoc& d1, const ScoreDoc& d2) {
   return d1.score < d2.score;
-}
-
-void ParseVSMQuery(const std::string& query_text, VSMQuery& query,
-                   InvertedIndex& index) {
-  std::vector<std::string> query_tokens;
-  ParseTokenLine(query_text, query_tokens);
-  std::vector<std::int32_t> term_ids;
-  for (auto& tk: query_tokens) {
-    auto it = index.term_id.find(tk);
-    if (it != index.term_id.end()) {
-      term_ids.push_back(it->second);
-    }
-  }
-  query.Init(term_ids);
 }
 
 void CalculateLd(const PostingTermVector& ptv,
@@ -81,14 +67,4 @@ void CosineSimilarity(const InvertedIndex& index,
   }
   std::sort(similarity.begin(), similarity.end(),
             [](const ScoreDoc& d1, const ScoreDoc& d2) { return d2 < d1; });
-}
-
-InvertedIndex::InvertedIndex(const std::string& index_data_path) {
-  LoadIndexData(index_data_path, ptv, id_path, id_term);
-  N = static_cast<double>(id_path.size());
-  ld.resize(id_path.size(), 0);
-  CalculateLd(ptv, ld, nullptr);
-  for (auto& it: id_term) {
-    term_id[it.second] = it.first;
-  }
 }

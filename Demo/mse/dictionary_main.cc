@@ -1,5 +1,5 @@
-#include "structure/base.h"
-#include "structure/dictionary.h"
+#include "base.h"
+#include "dictionary.h"
 
 void CreateDemoDictionary() {
   Dictionary dict {{"a", {3, 0}},

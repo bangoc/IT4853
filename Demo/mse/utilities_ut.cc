@@ -1,8 +1,8 @@
-#include <list>
+#include "utilities.h"
+#include "resources/files.h"
 
-#include <algorithm/utilities.h>
-#include <algorithm/resources/files.h>
 #include <gtest/gtest.h>
+#include <list>
 
 TEST(ParseList, NoTrailing) {
   std::list<long> lexp {1, 2, 3, 5, 6};

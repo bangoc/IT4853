@@ -1,5 +1,5 @@
-#ifndef STRUCTURE_TOKEN_H_
-#define STRUCTURE_TOKEN_H_
+#ifndef TOKEN_H_
+#define TOKEN_H_
 
 #include <string>
 #include <vector>
@@ -17,4 +17,4 @@ bool operator<(const Token& tk1, const Token& tk2);
 std::ostream& operator<<(std::ostream& stream, const Token& token);
 std::ostream& operator<<(std::ostream& stream, const TokenList& token_list);
 
-#endif  // STRUCTURE_TOKEN_H_
+#endif  // TOKEN_H_

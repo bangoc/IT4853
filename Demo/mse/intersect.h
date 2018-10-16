@@ -1,7 +1,7 @@
-#ifndef ALGORITHM_INTERSECT_H_
-#define ALGORITHM_INTERSECT_H_
+#ifndef INTERSECT_H_
+#define INTERSECT_H_
 
-#include <algorithm/utilities.h>
+#include "utilities.h"
 
 #include <list>
 

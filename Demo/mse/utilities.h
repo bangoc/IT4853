@@ -1,5 +1,5 @@
-#ifndef ALGORITHM_UTILITIES_H_
-#define ALGORITHM_UTILITIES_H_
+#ifndef UTILITIES_H_
+#define UTILITIES_H_
 
 #include <fstream>
 #include <string>
@@ -52,4 +52,4 @@ void ParseList(const std::string& file_name, T& out, int step_size) {
 
 bool Tokenize(const std::string& line, char separator, std::vector<std::string>& out);
 
-#endif  // ALGORITHM_UTILITIES_H_
+#endif  // UTILITIES_H_

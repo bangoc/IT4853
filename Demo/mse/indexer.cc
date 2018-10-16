@@ -1,4 +1,4 @@
-#include "structure/postings.h"
+#include "index_writer.h"
 
 #include <iostream>
 
