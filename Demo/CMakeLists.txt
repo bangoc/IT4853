@@ -6,7 +6,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 option(build_tools "Build the experimental tools" ON)
 option(build_temporaries "Build the temporary executable" ON)
 
-add_executable(cran cran_parser.cc)
+add_executable(cran tools/cran_parser.cc)
 add_subdirectory(thirdparty/googletest)
 configure_file(algorithm/resources/files.h.in algorithm/resources/files.h)
 foreach(test utilities_ut intersect_ut files_ut)
