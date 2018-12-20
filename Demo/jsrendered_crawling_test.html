@@ -1,0 +1,20 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="base64.js"></script>
+  <script>
+    function addTitle() {
+      title = document.createElement("title");
+      title.innerText = Base64.decode("VGl0bGUgYWRkZWQgYnkgamF2YXNjcmlwdA==");
+      document.getElementsByTagName('head')[0].appendChild(title);
+    }
+    function addParagraph() {
+      p = document.createElement("p");
+      p.innerText = Base64.decode("SmF2YVNjcmlwdCwgdGhlbyBwaGnDqm4gYuG6o24gaGnhu4duIGjDoG5oLCBsw6AgbeG7mXQgbmfDtG4gbmfhu68gbOG6rXAgdHLDrG5oIHRow7RuZyBk4buLY2ggxJHGsOG7o2MgcGjDoXQgdHJp4buDbiB04burIGPDoWMgw70gbmnhu4dtIG5ndXnDqm4gbeG6q3UuIE5nw7RuIG5n4buvIG7DoHkgxJHGsOG7o2MgZMO5bmcgcuG7mW5nIHLDo2kgY2hvIGPDoWMgdHJhbmcgd2ViKHBow61hIG5nxrDhu51pIGTDuW5nKSBjxaluZyBuaMawIHBow61hIG3DoXkgY2jhu6cgKHbhu5tpIE5vZGVqcykuIE7DsyB24buRbiDEkcaw4bujYyBwaMOhdCB0cmnhu4NuIGLhu59pIEJyZW5kYW4gRWljaCB04bqhaSBIw6NuZyB0cnV54buBbiB0aMO0bmcgTmV0c2NhcGUgduG7m2kgY8OhaSB0w6puIMSR4bqndSB0acOqbiBNb2NoYSwgcuG7k2kgc2F1IMSRw7MgxJHhu5VpIHTDqm4gdGjDoG5oIExpdmVTY3JpcHQsIHbDoCBjdeG7kWkgY8O5bmcgdGjDoG5oIEphdmFTY3JpcHQuIEdp4buRbmcgSmF2YSwgSmF2YVNjcmlwdCBjw7MgY8O6IHBow6FwIHTGsMahbmcgdOG7sSBDLCBuaMawbmcgbsOzIGfhuqduIHbhu5tpIFNlbGYgaMahbiBKYXZhLiAuanMgbMOgIHBo4bqnbiBt4bufIHLhu5luZyB0aMaw4budbmcgxJHGsOG7o2MgZMO5bmcgY2hvIHThuq1wIHRpbiBtw6Mgbmd14buTbiBKYXZhU2NyaXB0Lg");
+      document.getElementsByTagName('body')[0].appendChild(p);
+    }
+  </script>
+</head>
+<body onload="addTitle();addParagraph();">
+</body>
+</html>
