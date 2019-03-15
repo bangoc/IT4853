@@ -1,5 +1,6 @@
 #include "matplotlibcpp.h"
 
+#include <cmath>
 #include <iostream>
 #include <set>
 #include <sstream>
@@ -7,12 +8,22 @@
 
 namespace plt = matplotlibcpp;
 
+bool SameValue(double v1, double v2) {
+  static const double eps = 1e-10;
+  return std::fabs(v1 - v2) < eps;
+}
+
+bool SameOrGreater(double v1, double v2) {
+  static const double eps = 1e-10;
+  return SameValue(v1, v2) || v1 > v2;
+}
+
 double Interp(const std::vector<double>& pi,
               const std::vector<double>& ri,
               double r) {
   double max = 0;
   for (auto i = 0; i < ri.size(); ++i) {
-    if (ri[i] >= r && pi[i] > max) {
+    if (SameOrGreater(ri[i], r) && pi[i] > max) {
       max = pi[i];
     }
   }
@@ -50,11 +61,12 @@ int main(int argc, char* argv[]) {
     pi.push_back(cc / (i + 1));
     ri.push_back(cc / rq);
   }
-  std::vector<double> r_interp {0.0};
-  std::vector<double> p_interp {Interp(pi, ri, 0.0)};
-  for (int i = 0; i < 10; ++i) {
-    r_interp.push_back(r_interp[i] + 0.1);
-    p_interp.push_back(Interp(pi, ri, r_interp[i + 1]));
+  double r_norm = 0.0;
+  std::vector<double> r_interp;
+  std::vector<double> p_interp;
+  for (; SameOrGreater(1.0, r_norm); r_norm += 0.1) {
+    r_interp.push_back(r_norm);
+    p_interp.push_back(Interp(pi, ri, r_norm));
   }
   plt::plot(ri, pi, "b.-");
   plt::plot(r_interp, p_interp, "go-");
