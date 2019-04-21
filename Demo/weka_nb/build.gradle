@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'Classifier'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/nz.ac.waikato.cms.weka/weka-stable
+    compile group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.3'
+    // https://mvnrepository.com/artifact/log4j/log4j
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+}
