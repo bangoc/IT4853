@@ -86,7 +86,7 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; ++i) {
       double w = index.GetWtf(term, i, schema[0]) *
                  index.GetWdf(term, schema[1]);
-      double wnorm = w / dl[i];
+      double wnorm = dl[i] > 0? w / dl[i]: 0;
       std::cout << index.GetTf(term, i) << "\t" << w << "\t" 
                 << wnorm << "\t";
       rsv[i] += wnorm * w_tq;

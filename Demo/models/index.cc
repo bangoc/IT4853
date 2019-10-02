@@ -204,7 +204,10 @@ double Index::GetWdf(const std::string& term,
     }
     case 'p': {
       if (N > df) {
-        return MyLog((N-df)/df);
+        double w = MyLog((N-df)/df);
+        if (w > 0) {
+          return w;
+        }
       }
       return 0;
     }
