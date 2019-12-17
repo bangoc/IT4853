@@ -1,5 +1,5 @@
 Một số điểm cần lưu ý liên quan đến kế hoạch bảo vệ Bài tập lớn:
-1. Thời gian nộp bản mềm báo cáo là hết sáng thứ 3 ngày 17/12/2019, bắt buộc định dạng PDF, không nén, tên tệp trùng với tên nhóm.
+1. Thời gian nộp bản mềm báo cáo (email ngocnb) là hết sáng thứ 3 ngày 17/12/2019, bắt buộc định dạng PDF, không nén, tên tệp trùng với tên nhóm.
 2. Các nội dung đề cập đến trong báo cáo cũng như trình bày khi bảo vệ cần làm rõ các tính năng của hệ thống cùng với quá trình triển khai các tính năng đó, các khía cạnh kỹ thuật liên quan, cùng với các kết quả khác (nếu có) đã đạt được trong quá trình thực hiện BTL.
 3. Ngày bảo vệ các nhóm nộp bản cứng báo cáo, thuyết trình và trình diễn hệ thống trên mạng nội bộ.
 4. Về thời gian. Các nhóm tự điền thời gian thích hợp theo liên kết, trong trường hợp nhiều nhóm có cùng lựa chọn thì ưu tiên nhóm đăng ký trước!
