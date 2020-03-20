@@ -1,0 +1,13 @@
+d1: a a a b
+d2: a b b
+d3: a a
+d4: b b
+d5: b
+
+1. Tìm các tài liệu có cả a và b
+
+2. có a hoặc b
+
+3. có a và không có b
+
+4. có b và không có a
